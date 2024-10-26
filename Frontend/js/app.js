@@ -1,36 +1,43 @@
-async function fetchATMData() {
-    const apiKey = '832060a218e738937c74b55f9ca4524f'; // Replace with your actual API key
-    const response = await fetch(`http://api.nessieisreal.com/enterprise/atms?key=${apiKey}`);
-    const data = await response.json();
+// app.js
+
+function fetchATMData() {
     const atmList = document.getElementById('atm-list');
-    atmList.innerHTML = '';
-    data.forEach(atm => {
-        const listItem = document.createElement('div');
-        listItem.className = 'list-item';
-        listItem.innerHTML = `
-            <h3>${atm.name || 'ATM Location'}</h3>
-            <p>Address: ${atm.address.street_number} ${atm.address.street_name}, ${atm.address.city}</p>
-            <p>State: ${atm.address.state}, Zip Code: ${atm.address.zip}</p>
-        `;
-        atmList.appendChild(listItem);
-    });
+    atmList.innerHTML = 'Loading...';
+
+    fetch('http://api.nessieisreal.com/enterprise/locations?key=your_api_key')
+        .then(response => response.json())
+        .then(data => {
+            atmList.innerHTML = '';
+            data.forEach(atm => {
+                const listItem = document.createElement('div');
+                listItem.classList.add('list-item');
+                listItem.textContent = `ATM Location: ${atm.name} - ${atm.address}`;
+                atmList.appendChild(listItem);
+            });
+        })
+        .catch(error => {
+            atmList.innerHTML = 'Error loading ATM data.';
+            console.error(error);
+        });
 }
 
-async function fetchAccountData() {
-    const apiKey = '832060a218e738937c74b55f9ca4524f'; // Replace with your actual API key
-    const response = await fetch(`http://api.nessieisreal.com/enterprise/accounts?key=${apiKey}`);
-    const data = await response.json();
+function fetchAccountData() {
     const accountList = document.getElementById('account-list');
-    accountList.innerHTML = '';
-    data.forEach(account => {
-        const listItem = document.createElement('div');
-        listItem.className = 'list-item';
-        listItem.innerHTML = `
-            <h3>Account Nickname: ${account.nickname}</h3>
-            <p>Type: ${account.type}</p>
-            <p>Balance: $${account.balance}</p>
-            <p>Account Number: ${account.account_number}</p>
-        `;
-        accountList.appendChild(listItem);
-    });
+    accountList.innerHTML = 'Loading...';
+
+    fetch('http://api.nessieisreal.com/accounts?key=your_api_key')
+        .then(response => response.json())
+        .then(data => {
+            accountList.innerHTML = '';
+            data.forEach(account => {
+                const listItem = document.createElement('div');
+                listItem.classList.add('list-item');
+                listItem.textContent = `Account: ${account.nickname} - Balance: $${account.balance}`;
+                accountList.appendChild(listItem);
+            });
+        })
+        .catch(error => {
+            accountList.innerHTML = 'Error loading accounts.';
+            console.error(error);
+        });
 }
