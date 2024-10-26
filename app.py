@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 load_dotenv()
 # Nessie API key and base URL
-
+API_KEY = os.getenv('832060a218e738937c74b55f9ca4524f')
 BASE_URL = 'http://api.nessieisreal.com'
 
 # Route to retrieve customers from Nessie API
