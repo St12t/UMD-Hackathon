@@ -1,10 +1,13 @@
 from flask import Flask, jsonify
 import requests
+from dotenv import load_dotenv
+import os
 
 app = Flask(__name__)
 
+load_dotenv()
 # Nessie API key and base URL
-API_KEY = '832060a218e738937c74b55f9ca4524f'
+
 BASE_URL = 'http://api.nessieisreal.com'
 
 # Route to retrieve customers from Nessie API
@@ -43,4 +46,4 @@ def get_customer_by_id(customer_id):
 
 # Run the Flask app
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True,port ='5001')

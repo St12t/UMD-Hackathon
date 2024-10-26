@@ -1,0 +1,28 @@
+# Ignore the .env file containing sensitive data
+.env
+
+# Ignore virtual environments
+venv/
+env/
+
+# Ignore Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore log files
+*.log
+
+# Ignore compiled files
+*.so
+*.o
+*.out
+
+# Ignore IDE specific files
+.vscode/
+.idea/
+
+# Ignore any system files (Mac and Linux)
+.DS_Store
+Thumbs.db
