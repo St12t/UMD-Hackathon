@@ -14,7 +14,7 @@ BASE_URL = 'http://api.nessieisreal.com'
 @app.route('/customers', methods=['GET'])
 def get_customers():
     # Construct the URL to retrieve customers
-    url = f'{BASE_URL}/customers?key={API_KEY}'
+    url = f'http://api.nessieisreal.com/enterprise/bills?key=832060a218e738937c74b55f9ca4524f'
 
     # Make a request to the Nessie API
     response = requests.get(url)
@@ -26,22 +26,6 @@ def get_customers():
     else:
         return jsonify({"error": "Failed to retrieve customers"}), response.status_code
 
-
-# Route to retrieve a specific customer by ID
-@app.route('/customer/<customer_id>', methods=['GET'])
-def get_customer_by_id(customer_id):
-    # Construct the URL to retrieve a customer by their ID
-    url = f'{BASE_URL}/customers/{customer_id}?key={API_KEY}'
-
-    # Make a request to the Nessie API
-    response = requests.get(url)
-
-    # Check if the request was successful
-    if response.status_code == 200:
-        customer = response.json()
-        return jsonify(customer), 200
-    else:
-        return jsonify({"error": "Failed to retrieve customer"}), response.status_code
 
 
 # Run the Flask app

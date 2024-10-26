@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nessie - Capital One Hackathon API</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Nessie API Explorer</h1>
+        <p>Access public-facing data from Capital One's Hackathon API</p>
+    </header>
+
+    <main>
+        <section class="api-section">
+            <h2>ATM & Bank Locations</h2>
+            <p>Click the button below to fetch ATM and branch locations.</p>
+            <button onclick="fetchATMData()">Get ATM Locations</button>
+            <div id="atm-list" class="data-list"></div>
+        </section>
+
+        <section class="api-section">
+            <h2>Customer Accounts</h2>
+            <p>Click the button below to fetch mock customer accounts data.</p>
+            <button onclick="fetchAccountData()">Get Customer Accounts</button>
+            <div id="account-list" class="data-list"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Nessie API - Capital One Hackathon</p>
+    </footer>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
